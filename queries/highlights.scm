@@ -1,8 +1,11 @@
-(comment) @comment @spell
+(comment) @comment
 
 (value) @variable
 
-(attribute (keyword) @attribute)
+
+(attribute (keyword) @keyword)
+(directive (keyword) @keyword)
+(map (block (attribute (keyword) @string)))
 
 [
   (location_modifier)
@@ -10,18 +13,15 @@
 ] @operator
 
 [
-  (keyword)
-  "location"
-] @keyword
+"map"
+"location"
+] @function.special
 
-[
-  "if"
-  "map"
-] @keyword.conditional
+"if" @keyword
 
-(directive (keyword) @constant)
 
 (boolean) @boolean
+(boolean (off) @boolean ) 
 
 [
   (auto)
@@ -44,16 +44,19 @@
 (directive (variable (keyword) @variable.parameter))
 
 (location_route) @string.special
-";" @punctuation.delimiter
+
+";" @punctuation.delimiter @delimiter
 
 [
   (numeric_literal)
   (time)
   (size)
   (cpumask)
-] @number
+] @constant.numeric
 
 [
   "{"
   "}"
 ] @punctuation.bracket
+
+
